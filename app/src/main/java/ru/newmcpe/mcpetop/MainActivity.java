@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity
         MainFragment mainFragment = new MainFragment();
         replace.add(R.id.containermain,mainFragment);
         replace.commit();
+        // я пидор
     }
 
     @Override
