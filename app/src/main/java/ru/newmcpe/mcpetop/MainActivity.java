@@ -15,6 +15,7 @@ import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+    private static FragmentManager managera;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,22 +23,20 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
-
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         FragmentManager manager = getFragmentManager();
         FragmentTransaction replace = manager.beginTransaction();
         MainFragment mainFragment = new MainFragment();
-        replace.add(R.id.containermain,mainFragment);
+        replace.add(R.id.containermain, mainFragment);
         replace.commit();
-       replace.toString();
+        replace.toString();
+        managera = getFragmentManager();
     }
 
     @Override
@@ -48,6 +47,13 @@ public class MainActivity extends AppCompatActivity
         } else {
             super.onBackPressed();
         }
+    }
+
+    public static void changeFragment(Fragment toWhatChange) {
+        FragmentTransaction replace = managera.beginTransaction();
+        replace.remove(new MainFragment());
+        replace.replace(R.id.containermain, toWhatChange);
+        replace.commit();
     }
 
     @Override
@@ -83,7 +89,7 @@ public class MainActivity extends AppCompatActivity
             FragmentManager manager = getFragmentManager();
             FragmentTransaction replace = manager.beginTransaction();
             replace.remove(new MainFragment());
-            replace.replace(R.id.containermain,pluginsfragment);
+            replace.replace(R.id.containermain, pluginsfragment);
             replace.commit();
         } else if (id == R.id.nav_share) {
 
