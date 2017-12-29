@@ -3,6 +3,8 @@ package ru.newmcpe.mcpetop;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -44,8 +46,9 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
+        }
+        else {
+            changeFragment(new MainFragment());
         }
     }
 
@@ -71,8 +74,17 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        if (id == R.id.exit) {
+            MainActivity.this.finishAffinity();
+        }
+        if(id == R.id.nav_send){
+            Uri address = Uri.parse("http://vk.com/newmcpead");
+            Intent openlinkIntent = new Intent(Intent.ACTION_VIEW, address);
+            startActivity(openlinkIntent);
+        }if(id == R.id.nav_share){
+            Uri address = Uri.parse("http://vk.com/mcpe_top");
+            Intent openlinkIntent = new Intent(Intent.ACTION_VIEW, address);
+            startActivity(openlinkIntent);
         }
 
         return super.onOptionsItemSelected(item);

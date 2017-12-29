@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -71,11 +72,10 @@ public class PluginsFragment extends Fragment {
                         public void run() {
                             try {
                                 JSONArray jsonObject = new JSONArray(b.toString());
-
                                 for (int i = 0; i < jsonObject.length(); i++) {
-                                    JSONArray arrPlug = jsonObject.getJSONArray(i);
-                                    list.add(new Plugin(arrPlug.getString(0), arrPlug.getString(1), arrPlug.getString(2)));
-                                    Log.d("LogAdding", arrPlug.getString(0) + " : " + arrPlug.getString(1) + " : " + arrPlug.getString(2));
+                                    JSONObject arrPlug = jsonObject.getJSONObject(i);
+                                    list.add(new Plugin(arrPlug.getString("name"), arrPlug.getString("ver"), arrPlug.getString("shortdesc")));
+                                    Log.d("LogAdding", arrPlug.getString("name") + " : " + arrPlug.getString("ver") + " : " + arrPlug.getString("shortdesc"));
                                 }
                                 adapter.notifyDataSetChanged();
                             } catch (Throwable e) {
