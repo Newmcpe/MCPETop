@@ -19,6 +19,13 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     private static FragmentManager managera;
 
+    public static void changeFragment(Fragment toWhatChange) {
+        FragmentTransaction replace = managera.beginTransaction();
+        replace.remove(new MainFragment());
+        replace.replace(R.id.containermain, toWhatChange);
+        replace.commit();
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +46,7 @@ public class MainActivity extends AppCompatActivity
         replace.commit();
         replace.toString();
         managera = getFragmentManager();
+
     }
 
     @Override
@@ -46,17 +54,9 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
-        }
-        else {
+        } else {
             changeFragment(new MainFragment());
         }
-    }
-
-    public static void changeFragment(Fragment toWhatChange) {
-        FragmentTransaction replace = managera.beginTransaction();
-        replace.remove(new MainFragment());
-        replace.replace(R.id.containermain, toWhatChange);
-        replace.commit();
     }
 
     @Override
@@ -77,17 +77,23 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.exit) {
             MainActivity.this.finishAffinity();
         }
-        if(id == R.id.nav_send){
-            Uri address = Uri.parse("http://vk.com/newmcpead");
-            Intent openlinkIntent = new Intent(Intent.ACTION_VIEW, address);
-            startActivity(openlinkIntent);
-        }if(id == R.id.nav_share){
-            Uri address = Uri.parse("http://vk.com/mcpe_top");
-            Intent openlinkIntent = new Intent(Intent.ACTION_VIEW, address);
-            startActivity(openlinkIntent);
+        if (id == R.id.nav_send) {
+            Intent intent = new Intent();
+            intent.setAction(Intent.ACTION_VIEW);
+            intent.addCategory(Intent.CATEGORY_BROWSABLE);
+            intent.setData(Uri.parse("http://vk.com/newmcpe")); //cсылка
+            startActivity(intent);//старт
+        }
+        if (id == R.id.nav_share) {
+            Intent intent = new Intent();
+            intent.setAction(Intent.ACTION_VIEW);
+            intent.addCategory(Intent.CATEGORY_BROWSABLE);
+            intent.setData(Uri.parse("http://vk.com/mcpe_top")); //cсылка
+            startActivity(intent);//старт
         }
 
-        return super.onOptionsItemSelected(item);
+
+        return true;
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
@@ -104,9 +110,19 @@ public class MainActivity extends AppCompatActivity
             replace.replace(R.id.containermain, pluginsfragment);
             replace.commit();
         } else if (id == R.id.nav_share) {
-
+            Intent intent = new Intent();
+            intent.setAction(Intent.ACTION_VIEW);
+            intent.addCategory(Intent.CATEGORY_BROWSABLE);
+            intent.setData(Uri.parse("http://vk.com/mcpe_top")); //cсылка
+            startActivity(intent);//старт
         } else if (id == R.id.nav_send) {
-
+            Intent intent = new Intent();
+            intent.setAction(Intent.ACTION_VIEW);
+            intent.addCategory(Intent.CATEGORY_BROWSABLE);
+            intent.setData(Uri.parse("http://vk.com/newmcpead")); //cсылка
+            startActivity(intent);//старт
+        } else if (id == R.id.addplugin) {
+            changeFragment(new AddPluginFragment());
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

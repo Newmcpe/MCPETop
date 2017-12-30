@@ -7,4 +7,7 @@
     <string name="action_settings">Settings</string>
     <string name="worldguard">WorldGuard</string>
     <string name="v1_2">v1.2</string>
+    <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="addnewplugin">Добавить новый плагин</string>
+    <string name="addingcontent">Добавление контента</string>
 </resources>

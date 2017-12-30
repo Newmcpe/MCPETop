@@ -8,8 +8,8 @@
             android:id="@+id/nav_plugins"
             android:icon="@drawable/ic_plugins"
             android:title="Плагины" />
-
     </group>
+
     <item android:title="Контакты">
         <menu>
             <item
@@ -20,6 +20,15 @@
                 android:id="@+id/nav_send"
                 android:icon="@drawable/ic_menu_send"
                 android:title="Создатель" />
+        </menu>
+    </item>
+
+    <item android:title="@string/addingcontent">
+        <menu>
+            <item
+                android:id="@+id/addplugin"
+                android:icon="@drawable/ic_add"
+                android:title="@string/addnewplugin" />
         </menu>
     </item>
 
