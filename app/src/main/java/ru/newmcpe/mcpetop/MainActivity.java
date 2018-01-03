@@ -108,6 +108,13 @@ public class MainActivity extends AppCompatActivity
             replace.remove(new MainFragment());
             replace.replace(R.id.containermain, pluginsfragment);
             replace.commit();
+        } else if (id == R.id.nav_mods) {
+            Fragment pluginsfragment = new ModsFragment();
+            FragmentManager manager = getFragmentManager();
+            FragmentTransaction replace = manager.beginTransaction();
+            replace.remove(new MainFragment());
+            replace.replace(R.id.containermain, pluginsfragment);
+            replace.commit();
         } else if (id == R.id.nav_share) {
             Intent intent = new Intent();
             intent.setAction(Intent.ACTION_VIEW);

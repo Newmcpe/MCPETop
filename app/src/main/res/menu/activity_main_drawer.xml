@@ -8,6 +8,10 @@
             android:id="@+id/nav_plugins"
             android:icon="@drawable/ic_plugins"
             android:title="Плагины" />
+        <item
+            android:id="@+id/nav_mods"
+            android:icon="@drawable/ic_mods"
+            android:title="Моды" />
     </group>
 
     <item android:title="Контакты">

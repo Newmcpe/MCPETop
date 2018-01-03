@@ -36,8 +36,7 @@ public class MainFragment extends Fragment {
         modsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //  MainActivity.changeFragment(new PluginsFragment());
-                Toast.makeText(getActivity(), "Функция временно не работает. Ждите обновлений", Toast.LENGTH_SHORT).show();
+                MainActivity.changeFragment(new ModsFragment());
             }
         });
         Button texturePacksButton = getActivity().findViewById(R.id.texturepacksbutton);

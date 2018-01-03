@@ -36,7 +36,7 @@ public class PluginsFragment extends Fragment {
     public void onStart() {
         super.onStart();
         list = new ArrayList<Plugin>();
-        RecyclerView recyclerView = (RecyclerView) getActivity().findViewById(R.id.recyclerview);
+        RecyclerView recyclerView = (RecyclerView) getActivity().findViewById(R.id.pluginsrecycler);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
