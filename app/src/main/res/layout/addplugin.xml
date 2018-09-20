@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/namepluginedit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:ems="10"
+        android:hint="Название плагина"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/versionpluginedit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/namepluginedit"
+        android:ems="10"
+        android:hint="Версия плагина"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/shortdescedit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/versionpluginedit"
+        android:ems="10"
+        android:hint="Короткое описание плагина"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/longdescedit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/shortdescedit"
+        android:ems="10"
+        android:hint="Полное описание плагина"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/downloadlinkedit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/longdescedit"
+        android:ems="10"
+        android:hint="Ссылка на скачку(Пример:www.site.ru/TopPlugin.phar"
+        android:inputType="textPersonName" />
+
+    <Button
+        android:id="@+id/sendrequesttoaddplugin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/downloadlinkedit"
+        android:text="Отправить заявку разработчику" />
+</RelativeLayout>

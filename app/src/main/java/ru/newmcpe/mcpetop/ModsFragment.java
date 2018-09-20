@@ -29,46 +29,46 @@ import javax.net.ssl.HttpsURLConnection;
  * Created by Newmcpe on 27.12.2017.
  */
 
-public class PluginsFragment extends Fragment {
+public class ModsFragment extends Fragment {
     TextView listplugins;
-    private PluginAdapter adapter;
-    private ArrayList<Plugin> list;
+    private ModsAdapter adapter;
+    private ArrayList<Mod> list;
 
     @Override
     public void onStart() {
         super.onStart();
-        list = new ArrayList<Plugin>();
-        RecyclerView recyclerView = (RecyclerView) getActivity().findViewById(R.id.pluginsrecycler);
+        list = new ArrayList<Mod>();
+        RecyclerView recyclerView = (RecyclerView) getActivity().findViewById(R.id.modsrecycler);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
-        adapter = new PluginAdapter(initPlugins());
+        adapter = new ModsAdapter(initMods());
         recyclerView.setAdapter(adapter);
         final ActionBar actionBar = ((AppCompatActivity)getActivity()).getSupportActionBar();
-        actionBar.setTitle("Плагины");
+        actionBar.setTitle("Моды");
     }
 
-    private List<Plugin> initPlugins() {
-
+    private List<Mod> initMods() {
         new Thread(new Runnable() {
             @Override
             public void run() {
                 URL url;
                 try {
-                    url = new URL("http://194.67.202.172/scripts/PluginsList.php");
+                    url = new URL("http://194.67.202.172/scripts/ModsList.php");
                     HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                     conn.setReadTimeout(15000);
                     conn.setConnectTimeout(15000);
                     conn.setRequestMethod("GET");
                     conn.setDoInput(true);
-                    int responseCode = HttpsURLConnection.HTTP_OK;
+                    int responseCode = conn.getResponseCode();
                     final StringBuilder b = new StringBuilder();
-                    String line;
-                    BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-                    while ((line = br.readLine()) != null) {
-                        b.append(line);
+                    if (responseCode == HttpsURLConnection.HTTP_OK) {
+                        String line;
+                        BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                        while ((line = br.readLine()) != null) {
+                            b.append(line);
+                        }
                     }
-
                     getActivity().runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
@@ -76,7 +76,7 @@ public class PluginsFragment extends Fragment {
                                 JSONArray jsonObject = new JSONArray(b.toString());
                                 for (int i = 0; i < jsonObject.length(); i++) {
                                     JSONObject arrPlug = jsonObject.getJSONObject(i);
-                                    list.add(new Plugin(arrPlug.getString("name"), arrPlug.getString("ver"), arrPlug.getString("shortdesc")));
+                                    list.add(new Mod(arrPlug.getString("name"), arrPlug.getString("ver"), arrPlug.getString("shortdesc")));
                                     Log.d("LogAdding", arrPlug.getString("name") + " : " + arrPlug.getString("ver") + " : " + arrPlug.getString("shortdesc"));
                                 }
                                 adapter.notifyDataSetChanged();
@@ -92,13 +92,12 @@ public class PluginsFragment extends Fragment {
                 }
             }
         }).start();
-
         return list;
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.plugins, container, false);
+        return inflater.inflate(R.layout.modslist, container, false);
     }
 }

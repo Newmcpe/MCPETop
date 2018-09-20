@@ -10,4 +10,8 @@
     <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
     <string name="addnewplugin">Добавить новый плагин</string>
     <string name="addingcontent">Добавление контента</string>
+    <string name="comments">Комменатрии</string>
+    <string name="commenthint">Комментарий</string>
+    <string name="nicknamehint">Имя</string>
+    <string name="placecommenttext">Добавить комментарий</string>
 </resources>

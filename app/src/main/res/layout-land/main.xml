@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center|top"
+    android:paddingBottom="5dp"
+    android:paddingLeft="3dp"
+    android:paddingRight="3dp"
+    android:paddingTop="5dp">
+
+    <Button
+        android:id="@+id/pluginsbutton"
+        android:layout_width="500dp"
+        android:layout_height="35dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="#0099cc"
+        android:text="ПЛАГИНЫ" />
+
+    <Button
+        android:id="@+id/modsbutton"
+        android:layout_width="500dp"
+        android:layout_height="35dp"
+        android:layout_alignBottom="@+id/pluginsbutton"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_toEndOf="@+id/pluginsbutton"
+        android:layout_toRightOf="@+id/pluginsbutton"
+        android:background="#009933"
+        android:text="МОДЫ" />
+
+    <Button
+        android:id="@+id/texturepacksbutton"
+        android:layout_width="500dp"
+        android:layout_height="35dp"
+        android:layout_alignLeft="@+id/pluginsbutton"
+        android:layout_alignStart="@+id/pluginsbutton"
+        android:layout_below="@+id/pluginsbutton"
+        android:layout_marginTop="16dp"
+        android:background="#ffff00"
+        android:text="ТЕКСТУРПАКИ" />
+
+    <Button
+        android:id="@+id/mapsbutton"
+        android:layout_width="500dp"
+        android:layout_height="35dp"
+        android:layout_alignLeft="@+id/modsbutton"
+        android:layout_alignStart="@+id/modsbutton"
+        android:layout_alignTop="@+id/texturepacksbutton"
+        android:background="#ff9900"
+        android:text="КАРТЫ" />
+</RelativeLayout>
